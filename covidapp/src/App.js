@@ -7,6 +7,8 @@ import InfoBox from './components/InfoBox';
 import Map from './components/Map';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Table from './components/Table';
+import { sortData } from './util';
 
 // https://disease.sh/v3/covid-19/countries
 
@@ -14,6 +16,7 @@ function App() {
   const [countries, setCountries] = useState([])
   const [country, setCountry] = useState('worldwide')
   const [countryInfo, setCountryInfo] = useState({})
+  const [tabelData, setTabelData] = useState([])
 
   // this use effect accounts for tthe worldwide info
 
@@ -38,6 +41,8 @@ function App() {
                  value: country.countryInfo.iso2
                }
                ))
+               const sortedData = sortData(data)
+               setTabelData(sortedData)
                setCountries(countries)
               
            }
@@ -107,6 +112,7 @@ function App() {
             <CardContent>
                <h3>Live Cases by Country</h3>
                 {/* table */}
+                <Table countries={tabelData} />
                <h3>Worldwide New cases</h3>
                {/* graph */}
             </CardContent>

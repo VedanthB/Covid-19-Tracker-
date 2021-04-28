@@ -3,6 +3,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useEffect, useState } from 'react';
+import InfoBox from './components/InfoBox';
 
 // https://disease.sh/v3/covid-19/countries
 
@@ -49,8 +50,8 @@ function App() {
              >
 
             {/* Loop through the countries and then show dropdown list of them */}
-            <MenuItem value='worldwide'>Worldwide</MenuItem>
-             {
+            <MenuItem className='app__dropdownH' value='worldwide'>Worldwide</MenuItem>
+             { 
                countries.map((country) => 
                   <MenuItem value={country.value} > {country.name} </MenuItem> )
              }   
@@ -58,6 +59,14 @@ function App() {
            </Select> 
         </FormControl>
       </div>
+       
+
+      <div className="app__box">
+        <InfoBox title='Coranavirus Cases' cases={1234} total={2345} />
+        <InfoBox title='Recovered' cases={123344} total={454333} />
+        <InfoBox title='Deaths' cases={34543} total={455543} />
+      </div>
+
     </div>
   );
 }

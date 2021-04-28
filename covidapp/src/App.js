@@ -4,6 +4,9 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useEffect, useState } from 'react';
 import InfoBox from './components/InfoBox';
+import Map from './components/Map';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 // https://disease.sh/v3/covid-19/countries
 
@@ -40,33 +43,49 @@ function App() {
 
   return (
     <div className="app">
-      <div className="app__header">
-        <h1>COVID-19 TRACKER</h1>
-        <FormControl className='app__dropdown'>
-            <Select 
-             variant='outlined' 
-             value={country} 
-             onChange={onCountryChange}
+
+     <div className="app__left">
+       <div className="app__header">
+         <h1>COVID-19 TRACKER</h1>
+         <FormControl className='app__dropdown'>
+             <Select 
+              variant='outlined' 
+              value={country} 
+              onChange={onCountryChange}
              >
 
-            {/* Loop through the countries and then show dropdown list of them */}
-            <MenuItem className='app__dropdownH' value='worldwide'>Worldwide</MenuItem>
-             { 
-               countries.map((country) => 
-                  <MenuItem value={country.value} > {country.name} </MenuItem> )
-             }   
+             {/* Loop through the countries and then show dropdown list of them */}
+             <MenuItem className='app__dropdownH' value='worldwide'>Worldwide</MenuItem>
+              { 
+                countries.map((country) => 
+                    <MenuItem value={country.value} > {country.name} </MenuItem> )
+              }   
            
-           </Select> 
-        </FormControl>
-      </div>
+            </Select> 
+         </FormControl>
+       </div>
        
 
-      <div className="app__box">
-        <InfoBox title='Coranavirus Cases' cases={1234} total={2345} />
-        <InfoBox title='Recovered' cases={123344} total={454333} />
-        <InfoBox title='Deaths' cases={34543} total={455543} />
-      </div>
+        <div className="app__box">
+            <InfoBox title='Coranavirus Cases' cases={1234} total={2345} />
+            <InfoBox title='Recovered' cases={123344} total={454333} />
+            <InfoBox title='Deaths' cases={34543} total={455543} />
+        </div>
 
+        <Map/>
+     </div>
+
+      <div className='app__right'> 
+          <Card>
+            <CardContent>
+               <h3>Live Cases by Country</h3>
+                {/* table */}
+               <h3>Worldwide New cases</h3>
+               {/* graph */}
+            </CardContent>
+          </Card>
+      </div>
+      
     </div>
   );
 }

@@ -5,14 +5,20 @@
 body {
   background-color:#36393F;
 }
+
+.app {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 40px;
+
+}
+
 .app__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;;
   color: white;
-
-
 }
 
 .app__dropdown {
@@ -22,4 +28,18 @@ body {
 .app__box {
   display: flex;
   justify-content: space-between;
+}
+
+.app__left {
+  flex: 0.8;
+}
+
+.app__right {
+
+}
+
+@media (max-width: 990px) {
+  .app{
+    flex-direction: column;
+  }
 }
